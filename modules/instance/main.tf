@@ -4,7 +4,7 @@
 resource "tencentcloud_instance" "this" {
   instance_name = var.name
   hostname      = try(var.hostname.enabled, false) ? null : try(var.hostname.name, var.name)
-  iamge_id      = var.image_id
+  image_id      = var.image_id
   instance_type = var.instance_type
   key_ids       = [var.key_id]
   #   cam_role_name = (try(var.cam_role.enabled, true)

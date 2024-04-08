@@ -50,6 +50,12 @@ variable "key_id" {
   default     = null
 }
 
+variable "image_id" {
+  description = "(선택) 인스턴스 이미지 ID."
+  type        = string
+  default     = null
+}
+
 variable "system_disk_type" {
   description = "(선택) OS 디스크 타입 Valid values: LOCAL_BASIC: local disk, LOCAL_SSD: local SSD disk, CLOUD_SSD: SSD, CLOUD_PREMIUM: Premium Cloud Storage, CLOUD_BSSD: Basic SSD."
   type        = string
@@ -78,6 +84,12 @@ variable "allocate_public_ip" {
   description = "(선택) 인스턴스 Public IP 할당 여부."
   type        = bool
   default     = false
+}
+
+variable "internet_charge_type" {
+  description = "(선택) EIP 할당시 요금 지불방법 values `BANDWIDTH_PACKAGE`, `TRAFFIC_POSTPAID_BY_HOUR` default: TRAFFIC_POSTPAID_BY_HOUR"
+  type        = string
+  default     = "TRAFFIC_POSTPAID_BY_HOUR"
 }
 
 variable "internet_max_bandwidth_out" {
@@ -155,7 +167,7 @@ variable "cbs_block_device" {
   default     = {}
 }
 
-variable "ebs_tags" {
+variable "cbs_tags" {
   description = "(선택) CBS 태그 내용"
   type        = map(string)
   default     = {}
