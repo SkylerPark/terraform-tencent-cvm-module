@@ -40,5 +40,10 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_id"></a> [id](#output\_id) | key pair ID |
+| <a name="output_name"></a> [name](#output\_name) | key pair name |
+| <a name="output_private_key_pem"></a> [private\_key\_pem](#output\_private\_key\_pem) | Private key data PEM (RFC 1421) |
+| <a name="output_public_key"></a> [public\_key](#output\_public\_key) | key pair public key |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

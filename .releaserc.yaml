@@ -9,10 +9,10 @@ plugins:
   - "@semantic-release/release-notes-generator"
   - "@semantic-release/changelog"
   - "@semantic-release/git"
-  - "@semantic-release/gitlab"
+  - "@semantic-release/github"
 
 verifyConditions:
-  - "@semantic-release/gitlab"
+  - "@semantic-release/github"
 
 analyzeCommits:
   - path: "@semantic-release/commit-analyzer"
@@ -65,10 +65,10 @@ prepare:
   - path: "@semantic-release/changelog"
     changelogFile: "CHANGELOG.md"
 publish:
-  - path: "@semantic-release/gitlab"
+  - path: "@semantic-release/github"
 
 success:
-  - "@semantic-release/gitlab"
+  - "@semantic-release/github"
 
 fail:
-  - "@semantic-release/gitlab"
+  - "@semantic-release/github"
