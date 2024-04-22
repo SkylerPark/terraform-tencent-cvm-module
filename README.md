@@ -33,3 +33,70 @@
 ### Single CVM Instance
 
 하나의 CVM 인스턴스를 생성 하는 예시 입니다.
+
+```hcl
+module "instance" {
+  source                     = "../../modules/instance"
+  name                       = "parksm-test-01"
+  image_id                   = data.tencentcloud_image.rocky8.image_id
+  key_id                     = module.ssh_key.name
+  system_disk_size           = 50
+  system_disk_type           = "CLOUD_PREMIUM"
+  eip_enabled                = true
+  vpc_id                     = module.vpc.id
+  subnet_id                  = module.public_subnet_group.ids[0]
+  security_groups            = [module.security_group.id]
+  availability_zone          = local.availability_zones[0]
+  internet_max_bandwidth_out = 100
+  cbs_block_device = {
+    swap = {
+      storage_size = 10
+      storage_type = "CLOUD_PREMIUM"
+      encrypt      = true
+    }
+  }
+}
+```
+
+### Multiple EC2 Instance
+
+하나 이상의 EC2 Instance 를 생성 하는 예시입니다.
+
+```hcl
+locals {
+  instances = {
+    "01" = {
+      subnet            = "subnet-public-01"
+      availability_zone = "ap-seoul-1"
+    }
+    "02" = {
+      subnet            = "subnet-public-02"
+      availability_zone = "ap-seoul-2"
+    }
+  }
+}
+
+module "instance" {
+  source                     = "../../modules/instance"
+  for_each                   = local.instances
+  name                       = "parksm-test-${each.key}"
+  image_id                   = data.tencentcloud_image.rocky8.image_id
+  key_id                     = module.ssh_key.name
+  system_disk_size           = 50
+  system_disk_type           = "CLOUD_PREMIUM"
+  eip_enabled                = true
+  vpc_id                     = module.vpc.id
+  availability_zone          = each.value.availability_zone
+  subnet_id                  = each.value.subnet
+  security_groups            = [module.security_group.id]
+  internet_max_bandwidth_out = 100
+  cbs_block_device = {
+    swap = {
+      storage_size = 10
+      storage_type = "CLOUD_PREMIUM"
+      encrypt      = true
+    }
+  }
+}
+
+```
