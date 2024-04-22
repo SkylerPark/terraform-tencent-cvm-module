@@ -1,5 +1,5 @@
 module "ssh_key" {
   source             = "../../modules/key-pair"
-  name               = "parksm-test"
+  name               = "parksmKey"
   create_private_key = true
 }
