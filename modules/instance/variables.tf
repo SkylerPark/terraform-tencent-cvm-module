@@ -63,6 +63,7 @@ variable "project_id" {
   description = "(선택) 인스턴스가 생성될 Project ID, default: `0`."
   type        = number
   default     = 0
+  nullable    = false
 }
 
 variable "password" {
