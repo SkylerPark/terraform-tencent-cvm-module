@@ -18,7 +18,7 @@ resource "tencentcloud_instance" "this" {
 
   # Network
   allocate_public_ip         = var.eip_enabled ? false : var.allocate_public_ip
-  internet_max_bandwidth_out = var.eip_enabled ? null : var.internet_max_bandwidth_out
+  internet_max_bandwidth_out = var.eip_enabled ? null : var.max_bandwidth_out
   vpc_id                     = var.vpc_id
   subnet_id                  = var.subnet_id
   orderly_security_groups    = var.security_groups
@@ -62,8 +62,8 @@ resource "tencentcloud_cbs_storage_attachment" "this" {
 resource "tencentcloud_eip" "this" {
   count                      = var.eip_enabled ? 1 : 0
   name                       = var.name
-  internet_charge_type       = var.internet_charge_type
-  internet_max_bandwidth_out = var.internet_max_bandwidth_out
+  internet_charge_type       = var.charge_type
+  internet_max_bandwidth_out = var.max_bandwidth_out
   type                       = "EIP"
 
   tags = merge(var.tags, var.eip_tags)

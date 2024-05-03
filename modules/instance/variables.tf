@@ -77,13 +77,13 @@ variable "allocate_public_ip" {
   default     = false
 }
 
-variable "internet_charge_type" {
+variable "charge_type" {
   description = "(선택) EIP 할당시 요금 지불방법 values `BANDWIDTH_PACKAGE`, `TRAFFIC_POSTPAID_BY_HOUR` default: TRAFFIC_POSTPAID_BY_HOUR"
   type        = string
   default     = "TRAFFIC_POSTPAID_BY_HOUR"
 }
 
-variable "internet_max_bandwidth_out" {
+variable "max_bandwidth_out" {
   description = "(선택) Public IP 할당시 Bandwidth."
   type        = number
   default     = null
