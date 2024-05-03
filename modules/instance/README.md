@@ -35,7 +35,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_allocate_public_ip"></a> [allocate\_public\_ip](#input\_allocate\_public\_ip) | (선택) 인스턴스 Public IP 할당 여부. | `bool` | `false` | no |
 | <a name="input_availability_zone"></a> [availability\_zone](#input\_availability\_zone) | (선택) 인스턴스를 시작할 AZ. | `string` | `null` | no |
-| <a name="input_cam_role"></a> [cam\_role](#input\_cam\_role) | (선택) 인스턴스 CAM Role 설정 `cam_role` 블록 내용.<br>    (선택) `enabled` - 인스턴스 프로파일 IAM role 생성 여부 default: `false`.<br>    (선택) `name` - IAM role 이름.<br>    (선택) `path` - IAM role Path.<br>    (선택) `description` - IAM Role 설명.<br>    (선택) `assumable_roles` - 역할이 맡을 수 있는 IAM 역할 ARN 목록.<br>    (선택) `policies` - IAM 역할에 연결할 IAM 정책 ARN 목록.<br>    (선택) `inline_policies` - IAM 역할에 연결할 인라인 IAM 정책 맵. (`name` => `policy`). | `any` | `null` | no |
+| <a name="input_cam_role_name"></a> [cam\_role\_name](#input\_cam\_role\_name) | (선택) 인스턴스 CAM Role 이름 설정 값. | `string` | `null` | no |
 | <a name="input_cbs_block_device"></a> [cbs\_block\_device](#input\_cbs\_block\_device) | (선택) 인스턴스 추가 CBS 블록. | `any` | `{}` | no |
 | <a name="input_cbs_tags"></a> [cbs\_tags](#input\_cbs\_tags) | (선택) CBS 태그 내용 | `map(string)` | `{}` | no |
 | <a name="input_eip_enabled"></a> [eip\_enabled](#input\_eip\_enabled) | (선택) Instance 에 Elastic IP 할당 여부 | `bool` | `false` | no |

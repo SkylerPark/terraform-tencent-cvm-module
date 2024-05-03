@@ -7,10 +7,7 @@ resource "tencentcloud_instance" "this" {
   image_id      = var.image_id
   instance_type = var.instance_type
   key_ids       = [var.key_id]
-  #   cam_role_name = (try(var.cam_role.enabled, true)
-  #     ? module.cam_profile[0].name :
-  #     var.custom_cam_profile
-  #   )
+  cam_role_name = var.cam_role_name
 
   # Storage
   system_disk_type = var.system_disk_type

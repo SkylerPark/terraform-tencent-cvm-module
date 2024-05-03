@@ -7,18 +7,9 @@ variable "name" {
   nullable    = false
 }
 
-variable "cam_role" {
-  description = <<EOF
-  (선택) 인스턴스 CAM Role 설정 `cam_role` 블록 내용.
-    (선택) `enabled` - 인스턴스 프로파일 IAM role 생성 여부 default: `false`.
-    (선택) `name` - IAM role 이름.
-    (선택) `path` - IAM role Path.
-    (선택) `description` - IAM Role 설명.
-    (선택) `assumable_roles` - 역할이 맡을 수 있는 IAM 역할 ARN 목록.
-    (선택) `policies` - IAM 역할에 연결할 IAM 정책 ARN 목록.
-    (선택) `inline_policies` - IAM 역할에 연결할 인라인 IAM 정책 맵. (`name` => `policy`).
-  EOF
-  type        = any
+variable "cam_role_name" {
+  description = "(선택) 인스턴스 CAM Role 이름 설정 값."
+  type        = string
   default     = null
 }
 
