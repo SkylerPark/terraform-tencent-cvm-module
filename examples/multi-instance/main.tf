@@ -20,7 +20,7 @@ data "tencentcloud_image" "rocky8" {
 }
 
 module "vpc" {
-  source = "git::https://iep-git.com2us.com/iep/terraform/tencent-vpc-module.git//modules/vpc/?ref=tags/1.1.1"
+  source = "git::https://github.com/SkylerPark/terraform-tencent-vpc-module.git//modules/vpc/?ref=tags/1.2.0"
   name   = "parksm-test-vpc"
   ipv4_cidrs = [
     {
@@ -30,7 +30,7 @@ module "vpc" {
 }
 
 module "public_subnet_group" {
-  source = "git::https://iep-git.com2us.com/iep/terraform/tencent-vpc-module.git//modules/subnet-group/?ref=tags/1.1.1"
+  source = "git::https://github.com/SkylerPark/terraform-tencent-vpc-module.git//modules/subnet-group/?ref=tags/1.2.0"
   vpc_id = module.vpc.id
   subnets = {
     for idx in range(local.public_subnet_count) : format("parksm-test-public-subnet-0%s", (idx + 1)) => {
@@ -41,7 +41,7 @@ module "public_subnet_group" {
 }
 
 module "public_route_table" {
-  source  = "git::https://iep-git.com2us.com/iep/terraform/tencent-vpc-module.git//modules/route-table/?ref=tags/1.1.1"
+  source  = "git::https://github.com/SkylerPark/terraform-tencent-vpc-module.git//modules/route-table/?ref=tags/1.2.0"
   name    = "parksm-test-public-rt"
   vpc_id  = module.vpc.id
   subnets = module.public_subnet_group.ids
@@ -50,7 +50,7 @@ module "public_route_table" {
 }
 
 module "security_group" {
-  source = "git::https://iep-git.com2us.com/iep/terraform/tencent-vpc-module.git//modules/security-group/?ref=tags/1.1.1"
+  source = "git::https://github.com/SkylerPark/terraform-tencent-vpc-module.git//modules/security-group/?ref=tags/1.2.0"
   name   = "parksm-test-sg"
   ingress_rules = [
     {
