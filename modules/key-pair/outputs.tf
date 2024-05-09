@@ -15,6 +15,5 @@ output "public_key" {
 
 output "private_key_pem" {
   description = "Private key data PEM (RFC 1421)"
-  value       = tls_private_key.this[0].private_key_pem
-  sensitive   = true
+  value       = try(nonsensitive(tls_private_key.this[0].private_key_pem), null)
 }

@@ -19,7 +19,7 @@ output "private_ip" {
 
 output "public_ip" {
   description = "인스턴스 Public IP"
-  value       = var.eip_enabled ? tencentcloud_eip.this[0].id : tencentcloud_instance.this.public_ip
+  value       = var.eip_enabled ? tencentcloud_eip.this[0].public_ip : tencentcloud_instance.this.public_ip
 }
 
 output "availability_zone" {
