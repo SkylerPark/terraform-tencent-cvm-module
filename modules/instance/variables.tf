@@ -84,7 +84,7 @@ variable "charge_type" {
   default     = "TRAFFIC_POSTPAID_BY_HOUR"
 }
 
-variable "max_bandwidth_out" {
+variable "bandwidth_max_out" {
   description = "(선택) Public IP 할당시 Bandwidth."
   type        = number
   default     = null
