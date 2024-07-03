@@ -34,7 +34,7 @@ resource "tencentcloud_instance" "this" {
   password   = var.password
 
   # Network
-  allocate_public_ip         = var.eip_enabled ? false : var.allocate_public_ip
+  allocate_public_ip         = var.allocate_public_ip
   internet_max_bandwidth_out = var.eip_enabled ? null : var.bandwidth_max_out
   vpc_id                     = var.vpc_id
   subnet_id                  = var.subnet_id
