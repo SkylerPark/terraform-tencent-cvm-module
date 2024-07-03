@@ -1,12 +1,29 @@
 ###################################################
 # CVM Instance
 ###################################################
+locals {
+  state = {
+    "RUNNING" = {
+      force_delete = false
+      running_flag = true
+    }
+    "STOPPED" = {
+      force_delete = false
+      running_flag = false
+    }
+    "FORCED_STOP" = {
+      force_delete = true
+      running_flag = false
+    }
+  }
+}
+
 resource "tencentcloud_instance" "this" {
   instance_name = var.name
   hostname      = try(var.hostname.enabled, false) ? null : try(var.hostname.name, var.name)
   image_id      = var.image_id
   instance_type = var.instance_type
-  key_ids       = [var.key_id]
+  key_ids       = var.key_id != null ? [var.key_id] : null
   cam_role_name = var.cam_role_name
 
   # Storage
@@ -28,10 +45,14 @@ resource "tencentcloud_instance" "this" {
   disable_monitor_service  = !var.monitoring_enabled
   disable_security_service = !var.security_service_enabled
 
-  force_delete = var.force_delete
-  running_flag = var.running_flag
+  force_delete = local.state[var.state].force_delete
+  running_flag = local.state[var.state].running_flag
 
   tags = merge(var.tags, var.instance_tags)
+
+  lifecycle {
+    ignore_changes = [image_id]
+  }
 }
 
 ###################################################

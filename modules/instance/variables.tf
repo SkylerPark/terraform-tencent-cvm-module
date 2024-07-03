@@ -126,16 +126,16 @@ variable "security_service_enabled" {
   default     = false
 }
 
-variable "force_delete" {
-  description = "(선택) 인스턴스 강제 삭제 여부. `true`시 인스턴스가 휴지통으로 이동하지않고 영구 삭제."
-  type        = bool
-  default     = false
-}
+variable "state" {
+  description = "(선택) 인스턴스 상태 `RUNNING`, `STOPPED` or `FORCED_STOP` default: `RUNNING`."
+  type        = string
+  default     = "RUNNING"
+  nullable    = false
 
-variable "running_flag" {
-  description = "(선택) 인스턴스 실행 및 중지 설정 `true` 일 경우 실행 `false` 일 경우 중지 default: true"
-  type        = bool
-  default     = true
+  validation {
+    condition     = contains(["RUNNING", "STOPPED", "FORCED_STOP"], var.state)
+    error_message = "다음 입력 값으로 입력. `RUNNING`, `STOPPED` or `FORCED_STOP`."
+  }
 }
 
 variable "tags" {
