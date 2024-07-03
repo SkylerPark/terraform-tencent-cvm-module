@@ -34,6 +34,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_allocate_public_ip"></a> [allocate\_public\_ip](#input\_allocate\_public\_ip) | (선택) 인스턴스 Public IP 할당 여부. | `bool` | `false` | no |
+| <a name="input_api_termination_enabled"></a> [api\_termination\_enabled](#input\_api\_termination\_enabled) | (선택) API 로 종료 보호 활성화. | `bool` | `true` | no |
 | <a name="input_availability_zone"></a> [availability\_zone](#input\_availability\_zone) | (선택) 인스턴스를 시작할 AZ. | `string` | `null` | no |
 | <a name="input_bandwidth_max_out"></a> [bandwidth\_max\_out](#input\_bandwidth\_max\_out) | (선택) Public IP 할당시 Bandwidth. | `number` | `null` | no |
 | <a name="input_cam_role_name"></a> [cam\_role\_name](#input\_cam\_role\_name) | (선택) 인스턴스 CAM Role 이름 설정 값. | `string` | `null` | no |
@@ -48,12 +49,12 @@ No modules.
 | <a name="input_instance_tags"></a> [instance\_tags](#input\_instance\_tags) | (선택) 인스턴스 태그 내용 | `map(string)` | `{}` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | (선택) 인스턴스 타입 default: `S5.MEDIUM2` | `string` | `"S5.MEDIUM2"` | no |
 | <a name="input_key_id"></a> [key\_id](#input\_key\_id) | (선택) 인스턴스 로 Access 할수 있는 SSH Key ID default: `null` | `string` | `null` | no |
-| <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | (선택) 세부 모니터링 활성화. | `bool` | `false` | no |
+| <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | (선택) 세부 모니터링 활성화. | `bool` | `true` | no |
 | <a name="input_name"></a> [name](#input\_name) | (필수) 인스턴스 이름 | `string` | n/a | yes |
 | <a name="input_password"></a> [password](#input\_password) | (선택) 인스턴스 패스워드, 패스워드로 접속 가능. | `string` | `null` | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | (필수) 인스턴스가 생성될 Project ID, default: `0`. | `number` | `0` | no |
 | <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | (선택) 인스턴스 보안그룹 리스트 | `set(string)` | `[]` | no |
-| <a name="input_security_service_enabled"></a> [security\_service\_enabled](#input\_security\_service\_enabled) | (선택) 세부 보안 서비스 활성화. | `bool` | `false` | no |
+| <a name="input_security_service_enabled"></a> [security\_service\_enabled](#input\_security\_service\_enabled) | (선택) 세부 보안 서비스 활성화. | `bool` | `true` | no |
 | <a name="input_state"></a> [state](#input\_state) | (선택) 인스턴스 상태 `RUNNING`, `STOPPED` or `FORCED_STOP` default: `RUNNING`. | `string` | `"RUNNING"` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | (선택) 인스턴스 Subnet ID. | `string` | `null` | no |
 | <a name="input_system_disk_size"></a> [system\_disk\_size](#input\_system\_disk\_size) | (선택) OS 디스크 사이즈 default: `10` | `number` | `10` | no |

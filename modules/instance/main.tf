@@ -20,7 +20,7 @@ locals {
 
 resource "tencentcloud_instance" "this" {
   instance_name = var.name
-  hostname      = try(var.hostname.enabled, false) ? null : try(var.hostname.name, var.name)
+  hostname      = try(var.hostname.enabled, false) ? try(var.hostname.name, var.name) : null
   image_id      = var.image_id
   instance_type = var.instance_type
   key_ids       = var.key_id != null ? [var.key_id] : null
@@ -44,6 +44,7 @@ resource "tencentcloud_instance" "this" {
   # Attributes
   disable_monitor_service  = !var.monitoring_enabled
   disable_security_service = !var.security_service_enabled
+  disable_api_termination  = !var.api_termination_enabled
 
   force_delete = local.state[var.state].force_delete
   running_flag = local.state[var.state].running_flag

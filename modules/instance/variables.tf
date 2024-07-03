@@ -117,13 +117,19 @@ variable "security_groups" {
 variable "monitoring_enabled" {
   description = "(선택) 세부 모니터링 활성화."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "security_service_enabled" {
   description = "(선택) 세부 보안 서비스 활성화."
   type        = bool
-  default     = false
+  default     = true
+}
+
+variable "api_termination_enabled" {
+  description = "(선택) API 로 종료 보호 활성화."
+  type        = bool
+  default     = true
 }
 
 variable "state" {
